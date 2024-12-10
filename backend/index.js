@@ -11,6 +11,13 @@ const productRoute = require("./routes/productRoute");
 const categoryRoute = require("./routes/categoryRoute");
 
 const app = express();
+const buildPath = path.join(__dirname, 'frontend/build');
+app.use(express.static(buildPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+
 app.use(cors());
 
 // Database Connect
