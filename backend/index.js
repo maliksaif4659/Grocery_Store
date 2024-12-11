@@ -11,13 +11,6 @@ const productRoute = require("./routes/productRoute");
 const categoryRoute = require("./routes/categoryRoute");
 
 const app = express();
-const buildPath = path.join(__dirname, 'frontend/build');
-app.use(express.static(buildPath));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
-});
-
 app.use(cors());
 
 // Database Connect
@@ -41,9 +34,10 @@ cloudinary.config({
 });
 
 const PORT = 5000; // Set the port directly
+const HOST = '0.0.0.0';
 
-app.listen(PORT, "localhost", () => {
-  console.log(`Server Running At http://localhost:${PORT}`);
+app.listen(PORT, HOST, "localhost", () => {
+  console.log(`Server Running At http://${HOST}:${PORT}`);
 });
 
 // Load Route
