@@ -49,6 +49,6 @@ app.use("/api/category", categoryRoute);
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Access Front End All URL
-app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
